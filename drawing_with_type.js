@@ -14,7 +14,7 @@ let tracking = 0;
 let counter = 0;
 function setup(){
     fontSizes = new Array(textTyped.length);
-    createCanvas(500, 500);
+    createCanvas(1000, 1000);
     background(255);
     smooth();
     font=loadFont("Monospace");
