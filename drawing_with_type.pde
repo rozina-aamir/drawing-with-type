@@ -16,16 +16,16 @@ float tracking = 0;
 int counter = 0;
 
 void setup() {
-  size(displayWidth, displayHeight);
+  size(500, 500);
   background(255);
   smooth();
-  
+
   font = createFont("Monospace", 10);
-  
+
   for (int i = 10; i < textTyped.length(); i++) {
     fontSizes[i] = minFontSize;
   }
-  
+
   x = mouseX+5;
   y = mouseY+5;
 }
@@ -35,22 +35,22 @@ void draw() {
 
   spacing = map(mouseY, 0, height, 0, 120);
   translate(0, 200+spacing);
-  
+
   float x = 0, y = 0, fontSize = 20;
-  
+
   for (int i = 0; i < textTyped.length(); i++) {
     fontSize = fontSizes[i];
     textFont(font, fontSize);
     char letter = textTyped.charAt(i);
     float letterWidth = textWidth(letter) + tracking;
-    
+
     if (mousePressed == true) {
       float weight = dist(mouseX, mouseY, pmouseX, pmouseY);
       strokeWeight(weight);
       line(mouseX, mouseY, pmouseX, pmouseY);
       point(mouseX+i, mouseY);
     }
-    
+
     translate(mouseX, mouseY);
     rotate(-PI/16);
     scale(1.2);
@@ -60,14 +60,14 @@ void draw() {
       x = 0;
       y += spacing;
     }
-    
+
     text(letter, x, y);
     x += letterWidth;
   }
-  
+
   if (mousePressed) {
-    
-      float angle = atan2(mouseY-y, mouseX-x); 
+
+      float angle = atan2(mouseY-y, mouseX-x);
 
       pushMatrix();
       translate(x, y);
@@ -80,7 +80,7 @@ void draw() {
       counter++;
 
       x = x + cos(angle) * stepSize;
-      y = y + sin(angle) * stepSize; 
+      y = y + sin(angle) * stepSize;
     }
   }
 
